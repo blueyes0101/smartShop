@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import Header from './components/Header';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
-import Cart from './components/Cart'; // Sepet bileşenini ekleyin
+import Cart from './components/Cart';
+import Register from './components/Register'; // Kayıt bileşenini ekleyin
+import Login from './components/Login'; // Giriş bileşenini ekleyin
 import { setProducts } from './features/products/productsSlice';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -27,7 +29,9 @@ function App() {
           <Routes>
             <Route path="/" element={<ProductList />} />
             <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/cart" element={<Cart />} /> {/* Sepet rotasını ekleyin */}
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
       </div>
