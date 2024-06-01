@@ -1,5 +1,8 @@
+// firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -12,3 +15,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+const stripePromise = loadStripe("YOUR_STRIPE_PUBLIC_KEY");
+export { stripePromise };

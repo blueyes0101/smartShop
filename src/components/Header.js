@@ -1,13 +1,15 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useSelector } from 'react-redux';
 import { auth } from '../firebase';
 
 const Header = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+  const cartItemsCount = useSelector((state) => state.cart.items.length);
 
   const handleLogout = () => {
     auth.signOut();
@@ -24,7 +26,9 @@ const Header = () => {
             <Nav.Link>Home</Nav.Link>
           </LinkContainer>
           <LinkContainer to="/cart">
-            <Nav.Link>Cart</Nav.Link>
+            <Nav.Link>
+              Cart <Badge pill bg="light" text="dark">{cartItemsCount}</Badge>
+            </Nav.Link>
           </LinkContainer>
           {user ? (
             <Nav.Link onClick={handleLogout}>Logout</Nav.Link>

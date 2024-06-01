@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, ListGroup } from 'react-bootstrap';
 import { removeFromCart } from '../features/cart/cartSlice';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -36,6 +37,11 @@ const Cart = () => {
             ))}
           </ListGroup>
           <h3 className="mt-3">Total Price: ${totalPrice.toFixed(2)}</h3>
+          <LinkContainer to="/payment">
+            <Button variant="success" className="mt-3">
+              Proceed to Payment
+            </Button>
+          </LinkContainer>
         </div>
       )}
     </div>

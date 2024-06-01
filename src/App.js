@@ -4,10 +4,13 @@ import Header from './components/Header';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
-import Register from './components/Register'; // Kayıt bileşenini ekleyin
-import Login from './components/Login'; // Giriş bileşenini ekleyin
+import Register from './components/Register';
+import Login from './components/Login';
+import PaymentForm from './components/PaymentForm'; // Ödeme bileşenini ekleyin
 import { setProducts } from './features/products/productsSlice';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { stripePromise } from './firebase';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +35,11 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/payment" element={
+              <Elements stripe={stripePromise}>
+                <PaymentForm />
+              </Elements>
+            } />
           </Routes>
         </main>
       </div>
