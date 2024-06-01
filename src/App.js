@@ -6,7 +6,8 @@ import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import Register from './components/Register';
 import Login from './components/Login';
-import PaymentForm from './components/PaymentForm'; // Ödeme bileşenini ekleyin
+import PaymentForm from './components/PaymentForm';
+import SearchResults from './components/SearchResults';
 import { setProducts } from './features/products/productsSlice';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
@@ -17,9 +18,9 @@ function App() {
 
   useEffect(() => {
     const products = [
-      { id: 1, name: 'Product 1', description: 'Description 1', price: 10, image: 'https://via.placeholder.com/150' },
-      { id: 2, name: 'Product 2', description: 'Description 2', price: 20, image: 'https://via.placeholder.com/150' },
-      { id: 3, name: 'Product 3', description: 'Description 3', price: 30, image: 'https://via.placeholder.com/150' },
+      { id: 1, name: 'Product 1', category: 'Electronics', description: 'Description 1', price: 10, image: 'https://via.placeholder.com/150' },
+      { id: 2, name: 'Product 2', category: 'Clothing', description: 'Description 2', price: 20, image: 'https://via.placeholder.com/150' },
+      { id: 3, name: 'Product 3', category: 'Accessories', description: 'Description 3', price: 30, image: 'https://via.placeholder.com/150' },
     ];
     dispatch(setProducts(products));
   }, [dispatch]);
@@ -40,6 +41,7 @@ function App() {
                 <PaymentForm />
               </Elements>
             } />
+            <Route path="/search" element={<SearchResults />} />
           </Routes>
         </main>
       </div>
